@@ -1,5 +1,5 @@
 <?php
-$db_name='admin';
+$db_name='solartec';
 $db_user='root';
 $db_pass='';
 $db_host='localhost';
