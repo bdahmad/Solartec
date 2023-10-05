@@ -1,5 +1,6 @@
 <?php
 require_once('functions/function.php');
+require_once('config.php');
 
 getheader();
 getTopbar();
@@ -34,10 +35,10 @@ getNavbar();
                     <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done.</p>
                     <?php
                     if (!empty($_POST)) {
-                        $name = $_POST['name'];
-                        $email = $_POST['email'];
-                        $subject = $_POST['subject'];
-                        $message = $_POST['message'];
+                        $name = htmlentities($_POST['name'],ENT_QUOTES);
+                        $email = htmlentities($_POST['email'],ENT_QUOTES);
+                        $subject = htmlentities($_POST['subject'],ENT_QUOTES);
+                        $message = htmlentities($_POST['message'],ENT_QUOTES);
 
                         $insert = "INSERT INTO `contact`(`contact_name`, `contact_email`, `contact_subject`, `contact_message`)
                                  VALUES ('$name','$email','$subject','$message')";

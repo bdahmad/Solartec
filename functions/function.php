@@ -1,41 +1,54 @@
 <?php
-require_once("includes/config.php");
- function getheader(){
+
+function getheader()
+{
     require_once('includes/header.php');
 }
- function getfooter(){
+function getfooter()
+{
     require_once('includes/footer.php');
 }
-function getTopbar(){
+function getTopbar()
+{
     require_once('includes/topbar.php');
 }
-function getNavbar(){
+function getNavbar()
+{
     require_once('includes/navbar.php');
 }
-function getCarousel(){
+function getCarousel()
+{
     require_once('includes/carousel.php');
 }
-function getFeature(){
+function getFeature()
+{
     require_once('includes/feature.php');
 }
-function getAbout(){
+function getAbout()
+{
     require_once('includes/about.php');
 }
-function getProject(){
+function getProject()
+{
     require_once('includes/projects.php');
 }
-function getQuote(){
+function getQuote()
+{
     require_once('includes/quotes.php');
 }
-function getTeam(){
+function getTeam()
+{
     require_once('includes/team.php');
 }
-function getTestimonial(){
+function getTestimonial()
+{
     require_once('includes/testimonial.php');
 }
-function getService(){
+function getService()
+{
     require_once('includes/service.php');
 }
-function getCounter(){
+function getCounter()
+{
     require_once('includes/counter.php');
 }
