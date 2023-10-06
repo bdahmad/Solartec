@@ -1,5 +1,5 @@
 <?php
-
+require_once('config.php');
 function getheader()
 {
     require_once('includes/header.php');

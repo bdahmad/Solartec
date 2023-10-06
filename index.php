@@ -1,15 +1,16 @@
-<?php 
-    require_once('functions/function.php');
-    getheader();
-    getTopbar();
-    getNavbar();
-    getCarousel();
-    getCounter();
-    getAbout();
-    getService();
-    getFeature();
-    getProject();
-    getQuote();
-    getTeam();
-    getTestimonial();
-    getfooter();
+<?php
+require_once('functions/function.php');
+require_once('config.php');
+getheader();
+getTopbar();
+getNavbar();
+getCarousel();
+getCounter();
+getAbout();
+getService();
+getFeature();
+getProject();
+getQuote();
+getTeam();
+getTestimonial();
+getfooter();

@@ -18,50 +18,60 @@ get_sidebar();
                   <div class="col-md-8 card_title_part">
                      <i class="fab fa-gg-circle"></i>Add New Member
                   </div>
-                  <?php
-                     if (!empty($_POST)) {
-                        $title = $_POST['title'];
-                        $subtitle = $_POST['subtitle'];
-                        $button = $_POST['button'];
-                        $url = $_POST['url'];
-                        $photo = ($_FILES['photo']);
-                        $photoName = '';
-                        if ($photo['name'] != '') {
-                           $photoName = 'banner_' . time() . '_' . rand(100000, 100000000) . '.' . pathinfo($photo['name'], PATHINFO_EXTENSION);
-                        }
 
-                        $insert = "INSERT INTO `banners`( `banner_title`, `banner_subtitle`, `banner_button`, `banner_url`, `banner_image`) 
-                        VALUES ('$title','$subtitle','$button','$url','$photoName')";
-
-
-                        if (!empty($title)) {
-                           if (!empty($subtitle)) {
-                              if (!empty($button)) {
-                                 if (!empty($url)) {
-                                    if (mysqli_query($con, $insert)) {
-                                       move_uploaded_file($photo['tmp_name'], 'uploads/' . $photoName);
-                                       echo "Banner add successfully complete.";
-                                    } else {
-                                       echo "banner add failed.";
-                                    }
-                                 } else {
-                                    echo "enter url link.";
-                                 }
-                              } else {
-                                 echo "enter banner button text.";
-                              }
-                           } else {
-                              echo "enter banner subtitle.";
-                           }
-                        } else {
-                           echo "enter banner title.";
-                        }
-                     }
-                     ?>
                   <div class="col-md-4 card_button_part">
                      <a href="all-member.php" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Member</a>
                   </div>
                </div>
+               <?php
+               if (!empty($_POST)) {
+                  $name = $_POST['name'];
+                  $designation = $_POST['designation'];
+                  $facebook = $_POST['facebook'];
+                  $twitter = $_POST['twitter'];
+                  $instagram = $_POST['instagram'];
+                  $photo = ($_FILES['photo']);
+                  $photoName = '';
+                  if ($photo['name'] != '') {
+                     $photoName = 'member_' . trim(strtolower($name)) . '_' . time() . '_' . rand(100000, 100000000) . '.' . pathinfo($photo['name'], PATHINFO_EXTENSION);
+                  }
+
+                  $insert = "INSERT INTO `team`(`member_name`, `member_designation`, `member_facebook`, `member_twitter`, `member_instagram`, `member_image`) 
+                     VALUES ('$name','$designation','$facebook','$twitter','$instagram','$photoName')";
+
+
+                  if (!empty($name)) {
+                     if (!empty($designation)) {
+                        if (!empty($facebook)) {
+                           if (!empty($twitter)) {
+                              if (!empty($instagram)) {
+                                 if (!empty($photo)) {
+                                    if (mysqli_query($con, $insert)) {
+                                       move_uploaded_file($photo['tmp_name'], 'uploads/' . $photoName);
+                                       echo "Member add successfully complete.";
+                                    } else {
+                                       echo "banner add failed.";
+                                    }
+                                 } else {
+                                    echo "select member image.";
+                                 }
+                              } else {
+                                 echo "enter instagram link.";
+                              }
+                           } else {
+                              echo "enter twitter link.";
+                           }
+                        } else {
+                           echo "enter facebook link.";
+                        }
+                     } else {
+                        echo "enter designation.";
+                     }
+                  } else {
+                     echo "enter team member name.";
+                  }
+               }
+               ?>
             </div>
             <div class="card-body">
                <div class="row mb-3">
@@ -83,9 +93,15 @@ get_sidebar();
                   </div>
                </div>
                <div class="row mb-3">
-                  <label class="col-sm-3 col-form-label col_form_label">Url<span class="req_star">*</span>:</label>
+                  <label class="col-sm-3 col-form-label col_form_label">Twitter Link<span class="req_star">*</span>:</label>
                   <div class="col-sm-7">
-                     <input type="text" class="form-control form_control" id="" name="url">
+                     <input type="text" class="form-control form_control" id="" name="twitter">
+                  </div>
+               </div>
+               <div class="row mb-3">
+                  <label class="col-sm-3 col-form-label col_form_label">Instagram Link<span class="req_star">*</span>:</label>
+                  <div class="col-sm-7">
+                     <input type="text" class="form-control form_control" id="" name="instagram">
                   </div>
                </div>
                <div class="row mb-3">
@@ -96,7 +112,7 @@ get_sidebar();
                </div>
             </div>
             <div class="card-footer text-center">
-               <button type="submit" class="btn btn-sm btn-dark">ADD </button>
+               <button type="submit" class="btn btn-sm btn-dark">ADD Member</button>
             </div>
          </div>
       </form>
