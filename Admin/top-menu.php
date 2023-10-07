@@ -17,9 +17,11 @@ if ($_SESSION['role'] == 1) {
         $facebook = $_POST['facebook'];
         $twitter = $_POST['twitter'];
         $instagram = $_POST['instagram'];
+        $email = $_POST['email'];
+        $youtube = $_POST['youtube'];
 
 
-        $update = "UPDATE `topbar` SET `address`='$address',`office_time`='$time',`contact_no`='$contact',`facebook`='$facebook',`twitter`='$twitter',`linkedin`='$linkedin',`instagram`='$instagram' WHERE 1";
+        $update = "UPDATE `topbar` SET `address`='$address',`office_time`='$time',`contact_no`='$contact',`facebook`='$facebook',`twitter`='$twitter',`linkedin`='$linkedin',`instagram`='$instagram',`email`='$email',`youtube`='$youtube' WHERE 1";
 
 
         if (!empty($address)) {
@@ -29,10 +31,18 @@ if ($_SESSION['role'] == 1) {
                         if (!empty($twitter)) {
                             if (!empty($linkedin)) {
                                 if (!empty($instagram)) {
-                                    if (mysqli_query($con, $update)) {
-                                        header("Location: index.php");
+                                    if (!empty($email)) {
+                                        if (!empty($youtube)) {
+                                            if (mysqli_query($con, $update)) {
+                                                header("Location: index.php");
+                                            } else {
+                                                echo "Opps! update failed";
+                                            }
+                                        } else {
+                                            echo "enter youtube link.";
+                                        }
                                     } else {
-                                        echo "Opps! update failed";
+                                        echo "enter e-mail address link.";
                                     }
                                 } else {
                                     echo "enter instagram link.";
@@ -113,6 +123,18 @@ if ($_SESSION['role'] == 1) {
                             <label class="col-sm-3 col-form-label col_form_label">Instagram<span class="req_star">*</span>:</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control form_control" value="<?= $data['instagram']; ?>" id="" name="instagram">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label col_form_label">E-mail<span class="req_star">*</span>:</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control form_control" value="<?= $data['email']; ?>" id="" name="email">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label col_form_label">Youtube<span class="req_star">*</span>:</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control form_control" value="<?= $data['youtube']; ?>" id="" name="youtube">
                             </div>
                         </div>
 
