@@ -32,6 +32,7 @@ require_once('functions/function.php');
                         <li><a href="all-member.php"><i class="fas fa-comments"></i> Member</a></li>
                         <li><a href="all-service.php"><i class="fas fa-comments"></i> Service</a></li>
                         <li><a href="top-menu.php"><i class="fas fa-comments"></i> Top Menu</a></li>
+                        <li><a href="all-project.php"><i class="fas fa-comments"></i> Project</a></li>
                         <li><a href="#"><i class="fas fa-globe"></i> Live Site</a></li>
                         <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                     </ul>
