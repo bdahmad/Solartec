@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2023 at 12:05 PM
+-- Generation Time: Oct 08, 2023 at 12:54 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -68,6 +68,48 @@ INSERT INTO `contact` (`contact_id`, `contact_name`, `contact_email`, `contact_s
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `project`
+--
+
+CREATE TABLE `project` (
+  `project_id` int(11) NOT NULL,
+  `pro_cate_id` int(10) NOT NULL,
+  `project_link` varchar(100) NOT NULL,
+  `project_image` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `project`
+--
+
+INSERT INTO `project` (`project_id`, `pro_cate_id`, `project_link`, `project_image`) VALUES
+(1, 1, 'solartec.com/solar_project1', 'project_1696758714_66375000.jpg'),
+(2, 2, 'www.solartec.com/wind_fafdaf', 'project_1696758793_11397353.jpg'),
+(3, 3, 'solartec.com/hydropower_lkjdfalkfjla', 'project_1696758833_22860018.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project_cate`
+--
+
+CREATE TABLE `project_cate` (
+  `pro_cate_id` int(11) NOT NULL,
+  `pro_cate_list` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `project_cate`
+--
+
+INSERT INTO `project_cate` (`pro_cate_id`, `pro_cate_list`) VALUES
+(1, 'solar_panel'),
+(2, 'wind_turbine'),
+(3, 'hydropowder_plant');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `roles`
 --
 
@@ -120,6 +162,31 @@ CREATE TABLE `team` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `topbar`
+--
+
+CREATE TABLE `topbar` (
+  `address` varchar(50) NOT NULL,
+  `office_time` varchar(50) NOT NULL,
+  `contact_no` varchar(50) NOT NULL,
+  `facebook` varchar(50) NOT NULL,
+  `twitter` varchar(50) NOT NULL,
+  `linkedin` varchar(50) NOT NULL,
+  `instagram` varchar(50) NOT NULL,
+  `email` varchar(25) NOT NULL,
+  `youtube` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `topbar`
+--
+
+INSERT INTO `topbar` (`address`, `office_time`, `contact_no`, `facebook`, `twitter`, `linkedin`, `instagram`, `email`, `youtube`) VALUES
+('123, Mirpur-1, Dhaka', 'Mon-Fri: 9AM - 5PM', '01632459786', 'www.faceook.com/solartec', 'www.twitter.com/solartec', 'www.linkedlin.com/solartec', 'www.instagram.com/solartec', 'info.solartec.com', 'www.youtube.com/solartec');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -164,6 +231,19 @@ ALTER TABLE `contact`
   ADD PRIMARY KEY (`contact_id`);
 
 --
+-- Indexes for table `project`
+--
+ALTER TABLE `project`
+  ADD PRIMARY KEY (`project_id`),
+  ADD KEY `pro_cate_id` (`pro_cate_id`);
+
+--
+-- Indexes for table `project_cate`
+--
+ALTER TABLE `project_cate`
+  ADD PRIMARY KEY (`pro_cate_id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -205,6 +285,18 @@ ALTER TABLE `contact`
   MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `project`
+--
+ALTER TABLE `project`
+  MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `project_cate`
+--
+ALTER TABLE `project_cate`
+  MODIFY `pro_cate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
@@ -231,6 +323,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `project`
+--
+ALTER TABLE `project`
+  ADD CONSTRAINT `project_ibfk_1` FOREIGN KEY (`pro_cate_id`) REFERENCES `project_cate` (`pro_cate_id`);
 
 --
 -- Constraints for table `users`
